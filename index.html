@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM Manipulation Example</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    .highlight {
+      color: white;
+      background-color: blue;
+      padding: 5px;
+    }
+
+    .image {
+      width: 200px;
+      margin: 10px 0;
+    }
+
+    .paragraph {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1 id="mainHeading">Welcome to DOM Manipulation</h1>
+  <p class="paragraph">This is the first paragraph.</p>
+  <p class="paragraph">This is the second paragraph with a <span class="highlight">highlighted</span> word.</p>
+  <img src="https://via.placeholder.com/200" alt="Placeholder" class="image">
+  <img src="https://via.placeholder.com/200" alt="Placeholder" class="image">
+  <div id="container">
+    <p>This is a paragraph inside a container.</p>
+    <p>Another paragraph inside the container.</p>
+  </div>
+
+  <script>
+    // 1. Select by ID and change content
+    const mainHeading = document.getElementById("mainHeading");
+    mainHeading.textContent = "Updated Heading: DOM Manipulation in Action";
+    mainHeading.style.color = "green";
+
+    // 2. Select by class name and change styles
+    const paragraphs = document.getElementsByClassName("paragraph");
+    for (let i = 0; i < paragraphs.length; i++) {
+      paragraphs[i].style.fontSize = "18px";
+      paragraphs[i].style.color = "darkblue";
+    }
+
+    // 3. Select the first element with a querySelector
+    const firstImage = document.querySelector(".image");
+    firstImage.style.border = "2px solid red";
+
+    // 4. Select all elements with querySelectorAll and change styles
+    const images = document.querySelectorAll(".image");
+    images.forEach((img, index) => {
+      img.style.boxShadow = "5px 5px 10px gray";
+      img.alt = `Modified Image ${index + 1}`;
+    });
+
+    // 5. Modify nested elements inside a container
+    const containerParagraphs = document.querySelectorAll("#container p");
+    containerParagraphs.forEach((p, index) => {
+      p.style.fontStyle = "italic";
+      p.textContent = `Container Paragraph ${index + 1}`;
+    });
+  </script>
+</body>
+</html>
